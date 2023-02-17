@@ -1,0 +1,79 @@
+.profile {
+  /* For debugging, remove */
+  width: 880px;
+  display: flex;
+  padding-top: 40px;
+  padding-bottom: 51px;
+}
+
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: url(../images/jacques-cousteau.jpg) no-repeat center / cover;
+  margin-right: 30px;
+}
+
+.profile__info {
+  color: #fff;
+  margin-right: 165px;
+}
+
+.profile__info-name {
+  margin-top: 22px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: baseline;
+}
+
+.profile__info-name-text {
+  margin: 0;
+  margin-right: 18px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+}
+
+.profile__edit-button {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: 1px solid #ffffff;
+  background: url(../images/edit-icon.svg) no-repeat center / 10px 10px;
+  transition: opacity 0.2s ease;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.5;
+}
+
+.profile__title {
+  margin: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.profile__add-button {
+  width: 150px;
+  height: 50px;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  background: url(../images/plus-icon.svg) no-repeat center / 22px 22px;
+  align-self: center;
+  transition: opacity 0.2s ease;
+}
+
+.profile__add-button:hover {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 918px) {
+}
+
+@media screen and (max-width: 320px) {
+}

@@ -16,14 +16,27 @@
     <title>Around the US</title>
   </head>
   <body>
-    <header class="page"></header>
-    <main class="content">
+    <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/logo" />
+        <img class="header__logo" src="./images/logo.svg" />
       </header>
-      <section class="profile"></section>
-      <section class="elements"></section>
-    </main>
-    <footer class="footer"></footer>
+      <main class="content">
+        <section class="profile">
+          <div class="profile__avatar"></div>
+          <div class="profile__info">
+            <div class="profile__info-name">
+              <h1 class="profile__info-name-text">Jacques Cousteau</h1>
+              <form>
+                <button class="profile__edit-button"></button>
+              </form>
+            </div>
+            <p class="profile__title">Explorer</p>
+          </div>
+          <button class="profile__add-button"></button>
+        </section>
+        <section class="elements"></section>
+      </main>
+      <footer class="footer"></footer>
+    </div>
   </body>
 </html>
