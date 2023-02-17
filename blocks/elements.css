@@ -1,0 +1,19 @@
+.elements {
+  display: grid;
+  max-width: 880px;
+  width: 100%;
+  grid-template-columns: repeat(282px, autofill);
+}
+
+.elements__card {
+  width: calc((100% - 34px) / 3);
+}
+
+.elements__card_content_yosemite {
+}
+
+@media screen and (max-width: 918px) {
+}
+
+@media screen and (max-width: 320px) {
+}
