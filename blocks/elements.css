@@ -2,14 +2,48 @@
   display: grid;
   max-width: 880px;
   width: 100%;
-  grid-template-columns: repeat(282px, autofill);
+  grid-template-columns: repeat(auto-fit, 282px);
+  grid-gap: 20px 17px;
+  grid-auto-flow: column;
+  outline: blue 2px;
 }
 
-.elements__card {
-  width: calc((100% - 34px) / 3);
+.card {
+  width: 100%;
 }
 
-.elements__card_content_yosemite {
+.card__image {
+  height: 282px;
+  width: 100%;
+}
+
+.card__image__content_yosemite {
+  background: url(../images/card-images/yosemite.jpg) no-repeat center / 282px
+    282px;
+}
+
+.card__image__content_lake-louise {
+  background: url(../images/card-images/lake-louise.jpg) no-repeat center /
+    282px 282px;
+}
+
+.card__image__content_bald-mountains {
+  background: url(../images/card-images/bald-mountains.jpg) no-repeat center /
+    282px 282px;
+}
+
+.card__image__content_latemar {
+  background: url(../images/card-images/latemar.jpg) no-repeat center / 282px
+    282px;
+}
+
+.card__image__content_vanoise {
+  background: url(../images/card-images/vanoise.jpg) no-repeat center / 282px
+    282px;
+}
+
+.card__image__content_lago-di-braise {
+  background: url(../images/card-images/lago.jpg) no-repeat center / 282px 282px;
 }
 
 @media screen and (max-width: 918px) {
