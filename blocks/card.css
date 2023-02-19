@@ -1,10 +1,39 @@
 .card {
-  width: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .card__image {
   height: 282px;
   width: 100%;
+}
+
+.card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px 25px 20px;
+}
+
+.card_info-text {
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.card__like-button {
+  padding: 0;
+  width: 21px;
+  height: 18px;
+  border: none;
+  background: url(../images/heart.svg) no-repeat center / 21px 18px;
 }
 
 @media screen and (max-width: 918px) {
