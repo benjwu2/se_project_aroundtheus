@@ -34,6 +34,7 @@
   height: 18px;
   border: none;
   background: url(../images/heart.svg) no-repeat center / 21px 18px;
+  flex-shrink: 0;
 }
 
 @media screen and (max-width: 918px) {
