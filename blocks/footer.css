@@ -25,4 +25,9 @@
     max-width: 282px;
     padding-top: 48px;
   }
+
+  .footer__text {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
