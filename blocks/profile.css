@@ -76,8 +76,37 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 918px) {
+@media screen and (max-width: 780px) {
+  .profile__info-name-text {
+    width: min-content;
+  }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 650px) {
+  .profile {
+    flex-direction: column;
+  }
+
+  .profile__avatar {
+    margin: 0;
+    margin-bottom: 26.25px;
+  }
+
+  .profile__content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile__info-name-text {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    width: max-content;
+  }
+
+  .profile__title {
+    text-align: center;
+  }
 }

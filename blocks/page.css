@@ -12,9 +12,14 @@
 .page__content {
   max-width: 880px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 918px) {
+  .page__content {
+    width: calc(100% - 40px);
+  }
 }
 
 @media screen and (max-width: 320px) {

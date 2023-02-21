@@ -1,6 +1,7 @@
 .footer {
   padding-top: 67px;
-  align-self: flex-start;
+  width: 100%;
+  align-self: center;
 }
 
 .footer__text {
@@ -14,7 +15,13 @@
 }
 
 @media screen and (max-width: 918px) {
+  .footer {
+    max-width: 581px;
+  }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 650px) {
+  .footer {
+    max-width: 282px;
+  }
 }

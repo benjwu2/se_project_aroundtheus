@@ -4,11 +4,16 @@
   width: 100%;
   grid-template-columns: repeat(auto-fit, 282px);
   grid-gap: 20px 17px;
-  outline: blue 2px;
 }
 
 @media screen and (max-width: 918px) {
+  .gallery {
+    max-width: 581px;
+  }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 650px) {
+  .gallery {
+    max-width: 282px;
+  }
 }
