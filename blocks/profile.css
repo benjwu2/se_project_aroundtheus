@@ -43,7 +43,6 @@
 .profile__edit-button {
   width: 24px;
   height: 24px;
-  background: none;
   border: 1px solid #ffffff;
   background: url(../images/edit-icon.svg) no-repeat center / 10px 10px;
   transition: opacity 0.2s ease;
