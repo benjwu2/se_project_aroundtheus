@@ -85,6 +85,8 @@
 @media screen and (max-width: 650px) {
   .profile {
     flex-direction: column;
+    max-width: 282px;
+    width: 100%;
   }
 
   .profile__avatar {
@@ -97,6 +99,11 @@
     align-items: center;
   }
 
+  .profile__info-name {
+    margin: 0;
+    margin-bottom: 14px;
+  }
+
   .profile__info-name-text {
     font-family: "Inter";
     font-style: normal;
@@ -104,9 +111,26 @@
     font-size: 22px;
     line-height: 27px;
     width: max-content;
+    margin-right: 10px;
   }
 
   .profile__title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
     text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+    background: url(../images/edit-icon.svg) no-repeat center / 7.5px 7.49px;
+  }
+
+  .profile__add-button {
+    width: 100%;
   }
 }

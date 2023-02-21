@@ -37,8 +37,8 @@
   flex-shrink: 0;
 }
 
-@media screen and (max-width: 918px) {
-}
-
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 650px) {
+  .card {
+    width: 100%;
+  }
 }

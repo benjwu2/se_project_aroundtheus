@@ -18,9 +18,13 @@
 
 @media screen and (max-width: 918px) {
   .page__content {
-    width: calc(100% - 40px);
+    width: calc(100% - 19px);
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 650px) {
+  .page {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
 }
