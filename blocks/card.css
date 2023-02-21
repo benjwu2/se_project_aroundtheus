@@ -2,21 +2,23 @@
   background: #ffffff;
   border-radius: 10px;
   overflow: hidden;
+  width: 100%;
 }
 
 .card__image {
   height: 282px;
   width: 100%;
+  display: block;
 }
 
 .card__info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 30px 25px 20px;
+  padding: 25px 20px;
 }
 
-.card_info-text {
+.card__info-text {
   margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -41,10 +43,4 @@
 .card__like-button:hover {
   cursor: pointer;
   opacity: 0.5;
-}
-
-@media screen and (max-width: 650px) {
-  .card {
-    width: 100%;
-  }
 }
