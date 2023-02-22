@@ -104,11 +104,6 @@
     align-items: center;
   }
 
-  .profile__info-name {
-    margin: 0;
-    margin-bottom: 14px;
-  }
-
   .profile__info-name-text {
     font-size: 22px;
     line-height: 27px;
