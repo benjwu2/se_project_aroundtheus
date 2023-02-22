@@ -18,7 +18,8 @@
 
 @media screen and (max-width: 918px) {
   .page__content {
-    width: calc(100% - 38px);
+    box-sizing: border-box;
+    padding: 0 19px;
   }
 }
 
@@ -26,5 +27,10 @@
   .page {
     padding-top: 28px;
     padding-bottom: 36px;
+  }
+
+  /* For mobile breakpoint, padding must be only applied to .content block to allow .header to take up full page width  */
+  .page__content {
+    padding: 0;
   }
 }
