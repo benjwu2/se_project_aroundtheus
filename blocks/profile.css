@@ -21,11 +21,13 @@
 
 .profile__info {
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .profile__info-name {
-  margin-top: 22px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   display: flex;
   align-items: baseline;
 }
@@ -88,6 +90,7 @@
     flex-direction: column;
     max-width: 282px;
     width: 100%;
+    padding-top: 42px;
     padding-bottom: 36px;
   }
 
@@ -107,9 +110,6 @@
   }
 
   .profile__info-name-text {
-    font-family: "Inter", Arial, sans-serif;
-    font-style: normal;
-    font-weight: 500;
     font-size: 22px;
     line-height: 27px;
     width: max-content;
@@ -117,9 +117,6 @@
   }
 
   .profile__title {
-    font-family: "Inter", Arial, sans-serif;
-    font-style: normal;
-    font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     text-align: center;
