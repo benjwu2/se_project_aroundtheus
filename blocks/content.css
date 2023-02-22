@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 618px) {
   .content {
     box-sizing: border-box;
     padding: 0 19px;
