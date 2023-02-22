@@ -1,7 +1,13 @@
 .gallery {
+  width: 100%;
+}
+
+.gallery__item-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
   display: grid;
   max-width: 880px;
-  width: 100%;
   grid-template-columns: repeat(auto-fit, 282px);
   grid-gap: 20px 17px;
   justify-content: center;
