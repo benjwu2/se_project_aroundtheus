@@ -88,6 +88,7 @@
     flex-direction: column;
     max-width: 282px;
     width: 100%;
+    padding-bottom: 36px;
   }
 
   .profile__avatar {
