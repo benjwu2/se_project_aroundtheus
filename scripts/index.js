@@ -32,6 +32,8 @@ let saveButton = modal.querySelector(".modal__save-button");
 let inputName = modal.querySelector(".modal__input_type_name");
 let inputTitle = modal.querySelector(".modal__input_type_description");
 let form = modal.querySelector(".modal__container");
+let cardTemplate = document.querySelector("#card-template").content;
+let galleryList = document.querySelector(".gallery__item-list");
 
 // save name and title elements
 let name = document.querySelector(".profile__info-name-text");
@@ -47,6 +49,18 @@ function handleProfileFormSubmit(evt) {
   modal.classList.remove("modal_opened");
 }
 
+function getCardElement(data) {
+  let cardElement = cardTemplate.cloneNode(true);
+  let cardTitle = cardElement.querySelector(".card__info-text");
+  let cardImage = cardElement.querySelector(".card__image");
+
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
+  cardTitle.textContent = data.name;
+
+  return cardElement;
+}
+
 editButton.addEventListener("click", function () {
   modal.classList.add("modal_opened");
   inputName.value = name.textContent;
@@ -58,3 +72,10 @@ closeButton.addEventListener("click", function () {
 });
 
 form.addEventListener("submit", handleProfileFormSubmit);
+
+for (let i = 0; i < initialCards.length; i++) {
+  let cardObject = initialCards[i];
+
+  let completedCard = getCardElement(cardObject);
+  galleryList.append(completedCard);
+}
