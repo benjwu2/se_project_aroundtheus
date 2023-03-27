@@ -29,8 +29,16 @@ let editButton = document.querySelector(".profile__edit-button");
 let modal = document.querySelector(".modal");
 let closeButton = document.querySelector(".modal__close-button");
 
+// save text of name and title elements
+let name = document.querySelector(".profile__info-name-text").textContent;
+let title = document.querySelector(".profile__title").textContent;
+
 editButton.addEventListener("click", function () {
   modal.classList.add("modal_opened");
+
+  // set values of input fields to text of name and title elements
+  modal.querySelector(".modal__input_type_name").value = name;
+  modal.querySelector(".modal__input_type_description").value = title;
 });
 
 closeButton.addEventListener("click", function () {
