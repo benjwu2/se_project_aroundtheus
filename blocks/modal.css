@@ -77,10 +77,14 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
+  height: 23px;
 }
 
 .modal__input {
   padding: 0;
+  padding-bottom: 13.26px;
+  box-sizing: border-box;
+  height: 27.26px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
