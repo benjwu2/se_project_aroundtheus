@@ -27,20 +27,34 @@ let initialCards = [
 
 let editButton = document.querySelector(".profile__edit-button");
 let modal = document.querySelector(".modal");
-let closeButton = document.querySelector(".modal__close-button");
+let closeButton = modal.querySelector(".modal__close-button");
+let saveButton = modal.querySelector(".modal__save-button");
+let inputName = modal.querySelector(".modal__input_type_name");
+let inputTitle = modal.querySelector(".modal__input_type_description");
+let form = modal.querySelector(".modal__container");
 
-// save text of name and title elements
-let name = document.querySelector(".profile__info-name-text").textContent;
-let title = document.querySelector(".profile__title").textContent;
+// save name and title elements
+let name = document.querySelector(".profile__info-name-text");
+let title = document.querySelector(".profile__title");
+
+// event handler for save button event listener
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+
+  name.textContent = inputName.value;
+  title.textContent = inputTitle.value;
+
+  modal.classList.remove("modal_opened");
+}
 
 editButton.addEventListener("click", function () {
   modal.classList.add("modal_opened");
-
-  // set values of input fields to text of name and title elements
-  modal.querySelector(".modal__input_type_name").value = name;
-  modal.querySelector(".modal__input_type_description").value = title;
+  inputName.value = name.textContent;
+  inputTitle.value = title.textContent;
 });
 
 closeButton.addEventListener("click", function () {
   modal.classList.remove("modal_opened");
 });
+
+form.addEventListener("submit", handleProfileFormSubmit);
