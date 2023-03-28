@@ -28,10 +28,9 @@ let initialCards = [
 let editButton = document.querySelector(".profile__edit-button");
 let modal = document.querySelector(".modal");
 let closeButton = modal.querySelector(".modal__close-button");
-let saveButton = modal.querySelector(".modal__save-button");
 let inputName = modal.querySelector(".modal__input_type_name");
 let inputTitle = modal.querySelector(".modal__input_type_description");
-let form = modal.querySelector(".modal__container");
+let form = modal.querySelector(".modal__form");
 let cardTemplate = document.querySelector("#card-template").content;
 let galleryList = document.querySelector(".gallery__item-list");
 
