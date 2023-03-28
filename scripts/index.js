@@ -60,15 +60,19 @@ function getCardElement(data) {
   return cardElement;
 }
 
-editButton.addEventListener("click", function () {
+function openModal() {
   modal.classList.add("modal_opened");
   inputName.value = name.textContent;
   inputTitle.value = title.textContent;
-});
+}
 
-closeButton.addEventListener("click", function () {
+function closeModal() {
   modal.classList.remove("modal_opened");
-});
+}
+
+editButton.addEventListener("click", openModal);
+
+closeButton.addEventListener("click", closeModal);
 
 form.addEventListener("submit", handleProfileFormSubmit);
 
