@@ -124,4 +124,12 @@
     font-size: 14px;
     line-height: 17px;
   }
+
+  .modal__close-button {
+    height: 26px;
+    width: 26px;
+    background: url(../images/close-icon.svg) no-repeat center / 26px 26px;
+    right: 0;
+    top: -39.62px;
+  }
 }
