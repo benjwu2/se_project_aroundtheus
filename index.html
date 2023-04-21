@@ -38,7 +38,7 @@
             </div>
             <button class="profile__add-button" type="button"></button>
           </section>
-          <div class="modal">
+          <div class="modal modal_type_edit">
             <div class="modal__container">
               <form class="modal__form" name="edit">
                 <button class="modal__close-button" type="button"></button>
@@ -47,6 +47,27 @@
                   type="text"
                   class="modal__input modal__input_type_name"
                   placeholder="Name"
+                  name="name"
+                />
+                <input
+                  type="text"
+                  class="modal__input modal__input_type_description"
+                  placeholder="Description"
+                  name="description"
+                />
+                <button class="modal__save-button" type="submit">Save</button>
+              </form>
+            </div>
+          </div>
+          <div class="modal modal_type_add">
+            <div class="modal__container">
+              <form class="modal__form" name="add">
+                <button class="modal__close-button" type="button"></button>
+                <h2 class="modal__label">New place</h2>
+                <input
+                  type="text"
+                  class="modal__input modal__input_type_name"
+                  placeholder="Title"
                   name="name"
                 />
                 <input

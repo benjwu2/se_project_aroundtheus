@@ -26,13 +26,18 @@ let initialCards = [
 ];
 
 let editButton = document.querySelector(".profile__edit-button");
-let modal = document.querySelector(".modal");
-let closeButton = modal.querySelector(".modal__close-button");
-let inputName = modal.querySelector(".modal__input_type_name");
-let inputTitle = modal.querySelector(".modal__input_type_description");
-let form = modal.querySelector(".modal__form");
+let modalEdit = document.querySelector(".modal_type_edit");
+let closeButtons = document.querySelectorAll(".modal__close-button");
+let inputName = modalEdit.querySelector(".modal__input_type_name");
+let inputTitle = modalEdit.querySelector(".modal__input_type_description");
+let form = modalEdit.querySelector(".modal__form");
 let cardTemplate = document.querySelector("#card-template").content;
 let galleryList = document.querySelector(".gallery__item-list");
+let modals = document.querySelectorAll(".modal");
+
+// objects for the add modal
+let modalAdd = document.querySelector(".modal_type_add");
+let addButton = document.querySelector(".profile__add-button");
 
 // save name and title elements
 let name = document.querySelector(".profile__info-name-text");
@@ -45,8 +50,14 @@ function handleProfileFormSubmit(evt) {
   name.textContent = inputName.value;
   title.textContent = inputTitle.value;
 
-  modal.classList.remove("modal_opened");
+  modalEdit.classList.remove("modal_opened");
 }
+
+// event handler for the add button event listener
+const handleAddButtonClick = () => modalAdd.classList.add("modal_opened");
+addButton.addEventListener("click", handleAddButtonClick);
+
+// adding event listener to close button of the add modal
 
 function getCardElement(data) {
   let cardElement = cardTemplate.cloneNode(true);
@@ -61,18 +72,27 @@ function getCardElement(data) {
 }
 
 function openModal() {
-  modal.classList.add("modal_opened");
+  modalEdit.classList.add("modal_opened");
   inputName.value = name.textContent;
   inputTitle.value = title.textContent;
 }
 
+// event handler for the close button click event listener
+// function checks all modals for the modal_opened class and removes it if it is present
+// as only one modal can be open at a time, this should not be problematic
 function closeModal() {
-  modal.classList.remove("modal_opened");
+  modals.forEach((item) => {
+    if (item.classList.contains("modal_opened")) {
+      item.classList.remove("modal_opened");
+    }
+  });
 }
 
 editButton.addEventListener("click", openModal);
 
-closeButton.addEventListener("click", closeModal);
+// adding the same event listener to the close buttons on both modals
+
+closeButtons.forEach((item) => item.addEventListener("click", closeModal));
 
 form.addEventListener("submit", handleProfileFormSubmit);
 
