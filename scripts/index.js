@@ -76,9 +76,7 @@ closeButton.addEventListener("click", closeModal);
 
 form.addEventListener("submit", handleProfileFormSubmit);
 
-for (let i = 0; i < initialCards.length; i++) {
-  let cardObject = initialCards[i];
-
-  let completedCard = getCardElement(cardObject);
+initialCards.forEach((item) => {
+  let completedCard = getCardElement(item);
   galleryList.append(completedCard);
-}
+});
