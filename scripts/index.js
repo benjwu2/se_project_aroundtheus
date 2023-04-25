@@ -25,19 +25,43 @@ let initialCards = [
   },
 ];
 
+let modalEdit = document.querySelector("#edit-modal");
+let editForm = modalEdit.querySelector("#edit-form");
 let editButton = document.querySelector(".profile__edit-button");
-let modalEdit = document.querySelector(".modal_type_edit");
 let closeButtons = document.querySelectorAll(".modal__close-button");
-let inputName = modalEdit.querySelector(".modal__input_type_name");
+let inputNameEdit = modalEdit.querySelector(".modal__input_type_name-edit");
 let inputTitle = modalEdit.querySelector(".modal__input_type_description");
-let form = modalEdit.querySelector(".modal__form");
 let cardTemplate = document.querySelector("#card-template").content;
 let galleryList = document.querySelector(".gallery__item-list");
 let modals = document.querySelectorAll(".modal");
 
 // objects for the add modal
-let modalAdd = document.querySelector(".modal_type_add");
+let modalAdd = document.querySelector("#add-modal");
 let addButton = document.querySelector(".profile__add-button");
+let addForm = document.querySelector("#add-form");
+let inputNameAdd = document.querySelector(".modal__input_type_name-add");
+let inputSource = document.querySelector(".modal__input_type_src");
+
+// event handler for the add modal submit event listener
+function handleAddFormSubmit(evt) {
+  let cardElement = cardTemplate.cloneNode(true);
+  let cardTitle = cardElement.querySelector(".card__info-text");
+  let cardImage = cardElement.querySelector(".card__image");
+
+  evt.preventDefault();
+
+  cardImage.src = inputSource.value;
+  cardImage.alt = inputNameAdd.value;
+  cardTitle.textContent = inputNameAdd.value;
+
+  galleryList.prepend(cardElement);
+  modalAdd.classList.remove("modal_opened");
+
+  inputNameAdd.value = "";
+  inputSource.value = "";
+}
+
+addForm.addEventListener("submit", handleAddFormSubmit);
 
 // save name and title elements
 let name = document.querySelector(".profile__info-name-text");
@@ -47,7 +71,7 @@ let title = document.querySelector(".profile__title");
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
-  name.textContent = inputName.value;
+  name.textContent = inputNameEdit.value;
   title.textContent = inputTitle.value;
 
   modalEdit.classList.remove("modal_opened");
@@ -73,10 +97,11 @@ function getCardElement(data) {
 
 function openModal() {
   modalEdit.classList.add("modal_opened");
-  inputName.value = name.textContent;
+  inputNameEdit.value = name.textContent;
   inputTitle.value = title.textContent;
 }
 
+//! replace this by selecting the modals separately
 // event handler for the close button click event listener
 // function checks all modals for the modal_opened class and removes it if it is present
 // as only one modal can be open at a time, this should not be problematic
@@ -94,7 +119,7 @@ editButton.addEventListener("click", openModal);
 
 closeButtons.forEach((item) => item.addEventListener("click", closeModal));
 
-form.addEventListener("submit", handleProfileFormSubmit);
+editForm.addEventListener("submit", handleProfileFormSubmit);
 
 initialCards.forEach((item) => {
   let completedCard = getCardElement(item);
