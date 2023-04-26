@@ -47,12 +47,16 @@ function handleAddFormSubmit(evt) {
   let cardElement = cardTemplate.cloneNode(true);
   let cardTitle = cardElement.querySelector(".card__info-text");
   let cardImage = cardElement.querySelector(".card__image");
+  let cardCloseButton = cardElement.querySelector(".card__delete-button");
 
   evt.preventDefault();
 
   cardImage.src = inputSource.value;
   cardImage.alt = inputNameAdd.value;
   cardTitle.textContent = inputNameAdd.value;
+
+  // add an event listener to the delete button as only the delete buttons of pre-loaded cards have event listeners
+  cardCloseButton.addEventListener("click", handleDeleteButtonClick);
 
   galleryList.prepend(cardElement);
   modalAdd.classList.remove("modal_opened");
@@ -92,7 +96,6 @@ const handleImageClick = (evt) => {
 
   image.src = eventTarget.src;
   imageDescription.textContent = eventTarget.alt;
-  console.log(evt.target.nextSibling.textContent);
   image.alt = evt.target.nextSibling.textContent;
 
   modalImage.classList.add("modal_opened");
@@ -126,7 +129,7 @@ likeButtons.forEach((item) => {
 let name = document.querySelector(".profile__info-name-text");
 let title = document.querySelector(".profile__title");
 
-// event handler for save button event listener
+// event handler for edit button event listener
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
