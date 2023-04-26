@@ -61,7 +61,24 @@ function handleAddFormSubmit(evt) {
   inputSource.value = "";
 }
 
+// adding cards
+initialCards.forEach((item) => {
+  let completedCard = getCardElement(item);
+  galleryList.append(completedCard);
+});
+
 addForm.addEventListener("submit", handleAddFormSubmit);
+
+// like button
+let likeButtons = document.querySelectorAll(".card__like-button");
+
+const handleLikeButtonClick = (evt) => {
+  evt.target.classList.toggle("card__like-button_clicked");
+};
+
+likeButtons.forEach((item) => {
+  item.addEventListener("click", handleLikeButtonClick);
+});
 
 // save name and title elements
 let name = document.querySelector(".profile__info-name-text");
@@ -120,8 +137,3 @@ editButton.addEventListener("click", openModal);
 closeButtons.forEach((item) => item.addEventListener("click", closeModal));
 
 editForm.addEventListener("submit", handleProfileFormSubmit);
-
-initialCards.forEach((item) => {
-  let completedCard = getCardElement(item);
-  galleryList.append(completedCard);
-});

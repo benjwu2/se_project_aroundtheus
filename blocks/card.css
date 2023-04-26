@@ -40,6 +40,10 @@
   transition: opacity 0.2s ease;
 }
 
+.card__like-button_clicked {
+  background-image: url(../images/union.svg);
+}
+
 .card__like-button:hover {
   cursor: pointer;
   opacity: 0.5;
