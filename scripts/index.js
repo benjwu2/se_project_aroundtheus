@@ -69,6 +69,27 @@ initialCards.forEach((item) => {
 
 addForm.addEventListener("submit", handleAddFormSubmit);
 
+// picture modal
+let cardImages = document.querySelectorAll(".card__image");
+let modalImage = document.querySelector("#image-modal");
+
+const handleImageClick = (evt) => {
+  let eventTarget = evt.target;
+  let image = document.querySelector(".modal__image");
+  let imageDescription = document.querySelector(".modal__image-description");
+
+  image.src = eventTarget.src;
+  imageDescription.textContent = eventTarget.alt;
+  console.log(evt.target.nextSibling.textContent);
+  image.alt = evt.target.nextSibling.textContent;
+
+  modalImage.classList.add("modal_opened");
+};
+
+cardImages.forEach((item) => {
+  item.addEventListener("click", handleImageClick);
+});
+
 // delete button
 let deleteButtons = document.querySelectorAll(".card__delete-button");
 
@@ -131,13 +152,17 @@ function openModal() {
 // event handler for the close button click event listener
 // function checks all modals for the modal_opened class and removes it if it is present
 // as only one modal can be open at a time, this should not be problematic
-function closeModal() {
-  modals.forEach((item) => {
-    if (item.classList.contains("modal_opened")) {
-      item.classList.remove("modal_opened");
-    }
-  });
-}
+// function closeModal() {
+//   modals.forEach((item) => {
+//     if (item.classList.contains("modal_opened")) {
+//       item.classList.remove("modal_opened");
+//     }
+//   });
+// }
+
+const closeModal = (evt) => {
+  evt.target.closest(".modal").classList.remove("modal_opened");
+};
 
 editButton.addEventListener("click", openModal);
 

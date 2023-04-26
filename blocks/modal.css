@@ -8,10 +8,12 @@
   right: 0;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .modal_opened {
   display: flex;
+  flex-direction: column;
 }
 
 .modal__container {
@@ -68,6 +70,25 @@
 
 .modal__save-button:hover {
   opacity: 0.8;
+}
+
+.modal__image-container {
+  position: fixed;
+}
+
+.modal__image {
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.modal__image-description {
+  color: #fff;
+  text-align: left;
+  font-family: "Inter";
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0;
+  margin-top: 10px;
 }
 
 .modal__label {
@@ -131,5 +152,10 @@
     background: url(../images/close-icon.svg) no-repeat center / 26px 26px;
     right: 0;
     top: -39.62px;
+  }
+
+  .modal__close-button_type_image {
+    right: -40px;
+    top: -40px;
   }
 }
