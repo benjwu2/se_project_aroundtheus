@@ -69,6 +69,15 @@ initialCards.forEach((item) => {
 
 addForm.addEventListener("submit", handleAddFormSubmit);
 
+// delete button
+let deleteButtons = document.querySelectorAll(".card__delete-button");
+
+const handleDeleteButtonClick = (evt) => evt.target.parentElement.replaceWith();
+
+deleteButtons.forEach((item) => {
+  item.addEventListener("click", handleDeleteButtonClick);
+});
+
 // like button
 let likeButtons = document.querySelectorAll(".card__like-button");
 
