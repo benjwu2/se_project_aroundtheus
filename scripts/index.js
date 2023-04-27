@@ -48,6 +48,7 @@ function handleAddFormSubmit(evt) {
   let cardTitle = cardElement.querySelector(".card__info-text");
   let cardImage = cardElement.querySelector(".card__image");
   let cardCloseButton = cardElement.querySelector(".card__delete-button");
+  const likeButton = cardElement.querySelector(".card__like-button");
 
   evt.preventDefault();
 
@@ -57,6 +58,8 @@ function handleAddFormSubmit(evt) {
 
   // add an event listener to the delete button as only the delete buttons of pre-loaded cards have event listeners
   cardCloseButton.addEventListener("click", handleDeleteButtonClick);
+  likeButton.addEventListener("click", handleLikeButtonClick);
+  cardImage.addEventListener("click", handleImageClick);
 
   galleryList.prepend(cardElement);
   modalAdd.classList.remove("modal_opened");
