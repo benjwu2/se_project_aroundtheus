@@ -62,26 +62,15 @@ const closeModal = (popup) => {
 
 // event handler for the add modal submit event listener
 function handleAddFormSubmit(evt) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardTitle = cardElement.querySelector(".card__info-text");
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
-  const likeButton = cardElement.querySelector(".card__like-button");
+  const completedCard = getCardElement({
+    name: inputNameAdd.value,
+    link: inputSource.value,
+  });
 
   evt.preventDefault();
 
-  cardImage.src = inputSource.value;
-  cardImage.alt = inputNameAdd.value;
-  cardTitle.textContent = inputNameAdd.value;
-
-  // add an event listener to the delete button as only the delete buttons of pre-loaded cards have event listeners
-  cardDeleteButton.addEventListener("click", handleDeleteButtonClick);
-  likeButton.addEventListener("click", handleLikeButtonClick);
-  cardImage.addEventListener("click", handleImageClick);
-
-  galleryList.prepend(cardElement);
+  galleryList.prepend(completedCard);
   modalAdd.classList.remove("modal_opened");
-
   evt.target.reset();
 }
 
