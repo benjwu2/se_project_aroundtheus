@@ -52,12 +52,12 @@ inputTitle.value = title.textContent;
 
 // open and close modal functions
 const openModal = (popup) => {
-  console.log("beep");
   popup.classList.add("modal_opened");
 };
 
+// for closing add and edit modals on form submission
 const closeModal = (popup) => {
-  popup.target.closest(".modal").classList.remove("modal_opened");
+  popup.classList.remove("modal_opened");
 };
 
 // event handler for the add modal submit event listener
@@ -70,7 +70,7 @@ function handleAddFormSubmit(evt) {
   evt.preventDefault();
 
   galleryList.prepend(completedCard);
-  modalAdd.classList.remove("modal_opened");
+  closeModal(modalAdd);
   evt.target.reset();
 }
 
@@ -116,16 +116,9 @@ function handleImageClick(evt) {
   openModal(modalImage);
 }
 
-// delete button
-const deleteButtons = document.querySelectorAll(".card__delete-button");
-
 function handleDeleteButtonClick(evt) {
-  evt.target.parentElement.replaceWith();
+  evt.target.closest(".card").replaceWith();
 }
-
-deleteButtons.forEach((item) => {
-  item.addEventListener("click", handleDeleteButtonClick);
-});
 
 function handleLikeButtonClick(evt) {
   evt.target.classList.toggle("card__like-button_clicked");
@@ -139,6 +132,7 @@ function handleProfileFormSubmit(evt) {
   title.textContent = inputTitle.value;
 
   modalEdit.classList.remove("modal_opened");
+  closeModal(modalEdit);
 }
 
 editForm.addEventListener("submit", handleProfileFormSubmit);
@@ -149,4 +143,7 @@ editButton.addEventListener("click", () => openModal(modalEdit));
 
 // adding the same event listener to the close buttons on all modals
 
-closeButtons.forEach((item) => item.addEventListener("click", closeModal));
+closeButtons.forEach((item) => {
+  const closestModal = item.closest(".modal");
+  item.addEventListener("click", () => closeModal(closestModal));
+});
