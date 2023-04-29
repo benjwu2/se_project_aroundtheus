@@ -42,12 +42,30 @@ let addForm = document.querySelector("#add-form");
 let inputNameAdd = document.querySelector(".modal__input_type_name-add");
 let inputSource = document.querySelector(".modal__input_type_src");
 
+// save profile name and title elements
+let name = document.querySelector(".profile__info-name-text");
+let title = document.querySelector(".profile__title");
+
+// set value of edit form fields to match profile content
+inputNameEdit.value = name.textContent;
+inputTitle.value = title.textContent;
+
+// open and close modal functions
+const openModal = (popup) => {
+  console.log("beep");
+  popup.classList.add("modal_opened");
+};
+
+const closeModal = (popup) => {
+  popup.target.closest(".modal").classList.remove("modal_opened");
+};
+
 // event handler for the add modal submit event listener
 function handleAddFormSubmit(evt) {
   let cardElement = cardTemplate.cloneNode(true);
   let cardTitle = cardElement.querySelector(".card__info-text");
   let cardImage = cardElement.querySelector(".card__image");
-  let cardCloseButton = cardElement.querySelector(".card__delete-button");
+  let cardDeleteButton = cardElement.querySelector(".card__delete-button");
   const likeButton = cardElement.querySelector(".card__like-button");
 
   evt.preventDefault();
@@ -57,7 +75,7 @@ function handleAddFormSubmit(evt) {
   cardTitle.textContent = inputNameAdd.value;
 
   // add an event listener to the delete button as only the delete buttons of pre-loaded cards have event listeners
-  cardCloseButton.addEventListener("click", handleDeleteButtonClick);
+  cardDeleteButton.addEventListener("click", handleDeleteButtonClick);
   likeButton.addEventListener("click", handleLikeButtonClick);
   cardImage.addEventListener("click", handleImageClick);
 
@@ -88,7 +106,7 @@ initialCards.forEach((item) => {
   galleryList.append(completedCard);
 });
 
-// picture modal
+// image modal
 let cardImages = document.querySelectorAll(".card__image");
 let modalImage = document.querySelector("#image-modal");
 
@@ -128,10 +146,6 @@ likeButtons.forEach((item) => {
   item.addEventListener("click", handleLikeButtonClick);
 });
 
-// save name and title elements
-let name = document.querySelector(".profile__info-name-text");
-let title = document.querySelector(".profile__title");
-
 // event handler for edit button event listener
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -144,22 +158,9 @@ function handleProfileFormSubmit(evt) {
 
 editForm.addEventListener("submit", handleProfileFormSubmit);
 
-// event handler for the add button event listener
-const handleAddButtonClick = () => modalAdd.classList.add("modal_opened");
-addButton.addEventListener("click", handleAddButtonClick);
-
-// modal open and close event handlers
-function openModal() {
-  modalEdit.classList.add("modal_opened");
-  inputNameEdit.value = name.textContent;
-  inputTitle.value = title.textContent;
-}
-
-const closeModal = (evt) => {
-  evt.target.closest(".modal").classList.remove("modal_opened");
-};
-
-editButton.addEventListener("click", openModal);
+// event handlers to open add and edit modal
+addButton.addEventListener("click", () => openModal(modalEdit));
+editButton.addEventListener("click", () => openModal(modalEdit));
 
 // adding the same event listener to the close buttons on all modals
 
