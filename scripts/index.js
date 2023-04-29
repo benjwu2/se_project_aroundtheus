@@ -93,14 +93,17 @@ function getCardElement(data) {
   let cardElement = cardTemplate.cloneNode(true);
   let cardTitle = cardElement.querySelector(".card__info-text");
   let cardImage = cardElement.querySelector(".card__image");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+  const likeButton = cardElement.querySelector(".card__like-button");
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitle.textContent = data.name;
 
-  // adding click event listener for card image
+  // adding event listeners for image, like, and delete button
   cardImage.addEventListener("click", handleImageClick);
-
+  deleteButton.addEventListener("click", handleDeleteButtonClick);
+  likeButton.addEventListener("click", handleLikeButtonClick);
   return cardElement;
 }
 
@@ -127,22 +130,17 @@ function handleImageClick(evt) {
 // delete button
 let deleteButtons = document.querySelectorAll(".card__delete-button");
 
-const handleDeleteButtonClick = (evt) => evt.target.parentElement.replaceWith();
+function handleDeleteButtonClick(evt) {
+  evt.target.parentElement.replaceWith();
+}
 
 deleteButtons.forEach((item) => {
   item.addEventListener("click", handleDeleteButtonClick);
 });
 
-// like button
-let likeButtons = document.querySelectorAll(".card__like-button");
-
-const handleLikeButtonClick = (evt) => {
+function handleLikeButtonClick(evt) {
   evt.target.classList.toggle("card__like-button_clicked");
-};
-
-likeButtons.forEach((item) => {
-  item.addEventListener("click", handleLikeButtonClick);
-});
+}
 
 // event handler for edit button event listener
 function handleProfileFormSubmit(evt) {
