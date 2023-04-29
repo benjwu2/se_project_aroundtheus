@@ -98,6 +98,9 @@ function getCardElement(data) {
   cardImage.alt = data.name;
   cardTitle.textContent = data.name;
 
+  // adding click event listener for card image
+  cardImage.addEventListener("click", handleImageClick);
+
   return cardElement;
 }
 
@@ -107,10 +110,9 @@ initialCards.forEach((item) => {
 });
 
 // image modal
-let cardImages = document.querySelectorAll(".card__image");
 let modalImage = document.querySelector("#image-modal");
 
-const handleImageClick = (evt) => {
+function handleImageClick(evt) {
   let eventTarget = evt.target;
   let image = document.querySelector(".modal__image");
   let imageDescription = document.querySelector(".modal__image-description");
@@ -119,12 +121,8 @@ const handleImageClick = (evt) => {
   imageDescription.textContent = eventTarget.alt;
   image.alt = evt.target.nextSibling.textContent;
 
-  modalImage.classList.add("modal_opened");
-};
-
-cardImages.forEach((item) => {
-  item.addEventListener("click", handleImageClick);
-});
+  openModal(modalImage);
+}
 
 // delete button
 let deleteButtons = document.querySelectorAll(".card__delete-button");
