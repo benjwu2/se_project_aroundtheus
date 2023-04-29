@@ -1,4 +1,4 @@
-let initialCards = [
+const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -25,26 +25,26 @@ let initialCards = [
   },
 ];
 
-let modalEdit = document.querySelector("#edit-modal");
-let editForm = modalEdit.querySelector("#edit-form");
-let editButton = document.querySelector(".profile__edit-button");
-let closeButtons = document.querySelectorAll(".modal__close-button");
-let inputNameEdit = modalEdit.querySelector(".modal__input_type_name-edit");
-let inputTitle = modalEdit.querySelector(".modal__input_type_description");
-let cardTemplate = document.querySelector("#card-template").content;
-let galleryList = document.querySelector(".gallery__item-list");
-let modals = document.querySelectorAll(".modal");
+const modalEdit = document.querySelector("#edit-modal");
+const editForm = modalEdit.querySelector("#edit-form");
+const editButton = document.querySelector(".profile__edit-button");
+const closeButtons = document.querySelectorAll(".modal__close-button");
+const inputNameEdit = modalEdit.querySelector(".modal__input_type_name-edit");
+const inputTitle = modalEdit.querySelector(".modal__input_type_description");
+const cardTemplate = document.querySelector("#card-template").content;
+const galleryList = document.querySelector(".gallery__item-list");
+const modals = document.querySelectorAll(".modal");
 
 // objects for the add modal
-let modalAdd = document.querySelector("#add-modal");
-let addButton = document.querySelector(".profile__add-button");
-let addForm = document.querySelector("#add-form");
-let inputNameAdd = document.querySelector(".modal__input_type_name-add");
-let inputSource = document.querySelector(".modal__input_type_src");
+const modalAdd = document.querySelector("#add-modal");
+const addButton = document.querySelector(".profile__add-button");
+const addForm = document.querySelector("#add-form");
+const inputNameAdd = document.querySelector(".modal__input_type_name-add");
+const inputSource = document.querySelector(".modal__input_type_src");
 
 // save profile name and title elements
-let name = document.querySelector(".profile__info-name-text");
-let title = document.querySelector(".profile__title");
+const name = document.querySelector(".profile__info-name-text");
+const title = document.querySelector(".profile__title");
 
 // set value of edit form fields to match profile content
 inputNameEdit.value = name.textContent;
@@ -62,10 +62,10 @@ const closeModal = (popup) => {
 
 // event handler for the add modal submit event listener
 function handleAddFormSubmit(evt) {
-  let cardElement = cardTemplate.cloneNode(true);
-  let cardTitle = cardElement.querySelector(".card__info-text");
-  let cardImage = cardElement.querySelector(".card__image");
-  let cardDeleteButton = cardElement.querySelector(".card__delete-button");
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardTitle = cardElement.querySelector(".card__info-text");
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
   const likeButton = cardElement.querySelector(".card__like-button");
 
   evt.preventDefault();
@@ -82,17 +82,16 @@ function handleAddFormSubmit(evt) {
   galleryList.prepend(cardElement);
   modalAdd.classList.remove("modal_opened");
 
-  inputNameAdd.value = "";
-  inputSource.value = "";
+  evt.target.reset();
 }
 
 addForm.addEventListener("submit", handleAddFormSubmit);
 
 // adding cards
 function getCardElement(data) {
-  let cardElement = cardTemplate.cloneNode(true);
-  let cardTitle = cardElement.querySelector(".card__info-text");
-  let cardImage = cardElement.querySelector(".card__image");
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardTitle = cardElement.querySelector(".card__info-text");
+  const cardImage = cardElement.querySelector(".card__image");
   const deleteButton = cardElement.querySelector(".card__delete-button");
   const likeButton = cardElement.querySelector(".card__like-button");
 
@@ -104,21 +103,22 @@ function getCardElement(data) {
   cardImage.addEventListener("click", handleImageClick);
   deleteButton.addEventListener("click", handleDeleteButtonClick);
   likeButton.addEventListener("click", handleLikeButtonClick);
+
   return cardElement;
 }
 
 initialCards.forEach((item) => {
-  let completedCard = getCardElement(item);
+  const completedCard = getCardElement(item);
   galleryList.append(completedCard);
 });
 
 // image modal
-let modalImage = document.querySelector("#image-modal");
+const modalImage = document.querySelector("#image-modal");
 
 function handleImageClick(evt) {
-  let eventTarget = evt.target;
-  let image = document.querySelector(".modal__image");
-  let imageDescription = document.querySelector(".modal__image-description");
+  const eventTarget = evt.target;
+  const image = document.querySelector(".modal__image");
+  const imageDescription = document.querySelector(".modal__image-description");
 
   image.src = eventTarget.src;
   imageDescription.textContent = eventTarget.alt;
@@ -128,7 +128,7 @@ function handleImageClick(evt) {
 }
 
 // delete button
-let deleteButtons = document.querySelectorAll(".card__delete-button");
+const deleteButtons = document.querySelectorAll(".card__delete-button");
 
 function handleDeleteButtonClick(evt) {
   evt.target.parentElement.replaceWith();
@@ -155,7 +155,7 @@ function handleProfileFormSubmit(evt) {
 editForm.addEventListener("submit", handleProfileFormSubmit);
 
 // event handlers to open add and edit modal
-addButton.addEventListener("click", () => openModal(modalEdit));
+addButton.addEventListener("click", () => openModal(modalAdd));
 editButton.addEventListener("click", () => openModal(modalEdit));
 
 // adding the same event listener to the close buttons on all modals
