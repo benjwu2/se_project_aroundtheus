@@ -25,6 +25,7 @@ const initialCards = [
   },
 ];
 
+// edit modal objects
 const modalEdit = document.querySelector("#edit-modal");
 const editForm = modalEdit.querySelector("#edit-form");
 const editButton = document.querySelector(".profile__edit-button");
@@ -35,7 +36,7 @@ const cardTemplate = document.querySelector("#card-template").content;
 const galleryList = document.querySelector(".gallery__item-list");
 const modals = document.querySelectorAll(".modal");
 
-// objects for the add modal
+// add modal objects
 const modalAdd = document.querySelector("#add-modal");
 const addButton = document.querySelector(".profile__add-button");
 const addForm = document.querySelector("#add-form");
@@ -45,6 +46,11 @@ const inputSource = document.querySelector(".modal__input_type_src");
 // save profile name and title elements
 const name = document.querySelector(".profile__info-name-text");
 const title = document.querySelector(".profile__title");
+
+// image modal objects
+const modalImage = document.querySelector("#image-modal");
+const image = document.querySelector(".modal__image");
+const imageDescription = document.querySelector(".modal__image-description");
 
 // set value of edit form fields to match profile content
 inputNameEdit.value = name.textContent;
@@ -101,13 +107,8 @@ initialCards.forEach((item) => {
   galleryList.append(completedCard);
 });
 
-// image modal
-const modalImage = document.querySelector("#image-modal");
-
 function handleImageClick(evt) {
   const eventTarget = evt.target;
-  const image = document.querySelector(".modal__image");
-  const imageDescription = document.querySelector(".modal__image-description");
 
   image.src = eventTarget.src;
   imageDescription.textContent = eventTarget.alt;
@@ -131,7 +132,6 @@ function handleProfileFormSubmit(evt) {
   name.textContent = inputNameEdit.value;
   title.textContent = inputTitle.value;
 
-  modalEdit.classList.remove("modal_opened");
   closeModal(modalEdit);
 }
 
