@@ -147,3 +147,21 @@ closeButtons.forEach((item) => {
   const closestModal = item.closest(".modal");
   item.addEventListener("click", () => closeModal(closestModal));
 });
+
+// validation functions
+
+function setEventListeners(form) {
+  const inputList = form.querySelectorAll(".modal__form");
+}
+
+function hasInvalidInput(inputList) {
+  return inputList.some((input) => !input.validity.valid);
+}
+
+function toggleButtonStatus(inputList, buttonElement) {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.setAttribute("disabled", true);
+  } else {
+    buttonElement.removeAttribute("disabled");
+  }
+}
