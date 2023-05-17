@@ -150,16 +150,25 @@ closeButtons.forEach((item) => {
 
 // validation functions
 
+function enableValidation() {
+  const formList = Array.from(document.querySelectorAll(".modal__form"));
+
+  formList.forEach((form) => {
+    setEventListeners(form);
+  });
+}
+
 function setEventListeners(form) {
-  const inputList = Array.from(form.querySelectorAll(".modal__form"));
+  const inputList = Array.from(form.querySelectorAll(".modal__input"));
   const buttonElement = form.querySelector(".modal__save-button");
+
+  toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       const errorElement = form.querySelector(`#${inputElement.id}-error`);
-
       checkInputValidity(inputElement, errorElement);
-      toggleButtonStatus(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement);
     });
   });
 }
@@ -180,7 +189,7 @@ function hasInvalidInput(inputList) {
   return inputList.some((input) => !input.validity.valid);
 }
 
-function toggleButtonStatus(inputList, buttonElement) {
+function toggleButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
     buttonElement.setAttribute("disabled", true);
     buttonElement.classList.add("modal__save-button_disabled");
@@ -189,3 +198,5 @@ function toggleButtonStatus(inputList, buttonElement) {
     buttonElement.classList.remove("modal__save-button_disabled");
   }
 }
+
+enableValidation();
