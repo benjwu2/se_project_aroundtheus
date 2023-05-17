@@ -151,7 +151,17 @@ closeButtons.forEach((item) => {
 // validation functions
 
 function setEventListeners(form) {
-  const inputList = form.querySelectorAll(".modal__form");
+  const inputList = Array.from(form.querySelectorAll(".modal__form"));
+  const buttonElement = form.querySelector(".modal__save-button");
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", () => {
+      const errorElement = form.querySelector(`#${inputElement.id}-error`);
+
+      checkInputValidity(inputElement, errorElement);
+      toggleButtonStatus(inputList, buttonElement);
+    });
+  });
 }
 
 function checkInputValidity(inputElement, errorElement) {
