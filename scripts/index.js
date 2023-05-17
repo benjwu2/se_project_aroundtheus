@@ -42,6 +42,7 @@ const addButton = document.querySelector(".profile__add-button");
 const addForm = document.querySelector("#add-form");
 const inputNameAdd = document.querySelector(".modal__input_type_name-add");
 const inputSource = document.querySelector(".modal__input_type_src");
+const addFormSaveButton = addForm.querySelector(".modal__save-button");
 
 // save profile name and title elements
 const name = document.querySelector(".profile__info-name-text");
@@ -74,10 +75,13 @@ function handleAddFormSubmit(evt) {
   });
 
   evt.preventDefault();
-
   galleryList.prepend(completedCard);
   closeModal(modalAdd);
   evt.target.reset();
+  toggleButtonState(
+    Array.from(addForm.querySelectorAll(".modal__input")),
+    addFormSaveButton
+  );
 }
 
 addForm.addEventListener("submit", handleAddFormSubmit);
