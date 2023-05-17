@@ -154,6 +154,18 @@ function setEventListeners(form) {
   const inputList = form.querySelectorAll(".modal__form");
 }
 
+function checkInputValidity(inputElement, errorElement) {
+  if (inputElement.validity.valid) {
+    inputElement.classList.remove("modal__input_invalid");
+    errorElement.classList.remove("modal__error_visible");
+    errorElement.textContent = "";
+  } else {
+    inputElement.classList.remove("modal__input_invalid");
+    errorElement.classList.add("modal__error_visible");
+    errorElement.textContent = inputElement.validationMessage;
+  }
+}
+
 function hasInvalidInput(inputList) {
   return inputList.some((input) => !input.validity.valid);
 }
@@ -161,7 +173,9 @@ function hasInvalidInput(inputList) {
 function toggleButtonStatus(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
     buttonElement.setAttribute("disabled", true);
+    buttonElement.classList.add("modal__save-button_disabled");
   } else {
     buttonElement.removeAttribute("disabled");
+    buttonElement.classList.remove("modal__save-button_disabled");
   }
 }

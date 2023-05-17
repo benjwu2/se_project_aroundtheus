@@ -75,6 +75,14 @@
   opacity: 0.8;
 }
 
+.modal__save-button_disabled {
+  background-color: #e5e5e5;
+  opacity: 0.2;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  color: #000;
+}
+
 .modal__image-container {
   position: fixed;
 }
@@ -128,6 +136,23 @@
 
 .modal__input:first-of-type {
   margin-bottom: 29.74px;
+}
+
+.modal__input_invalid {
+  border-bottom: 1px solid #ff0000;
+}
+
+.modal__error {
+  visibility: hidden;
+}
+
+.modal__error_visible {
+  visibility: visible;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
 }
 
 @media screen and (max-width: 618px) {
