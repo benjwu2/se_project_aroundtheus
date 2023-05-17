@@ -113,7 +113,7 @@
 
 .modal__input {
   padding: 0;
-  padding-bottom: 13.26px;
+  padding-bottom: 5px;
   box-sizing: border-box;
   height: 27.26px;
   border: none;
@@ -135,7 +135,7 @@
 }
 
 .modal__input:first-of-type {
-  margin-bottom: 29.74px;
+  margin-bottom: 30px;
 }
 
 .modal__input_invalid {
@@ -144,6 +144,12 @@
 
 .modal__error {
   visibility: hidden;
+  position: absolute;
+  top: 151.3px;
+}
+
+.modal__error:last-of-type {
+  top: 208.5px;
 }
 
 .modal__error_visible {
