@@ -65,7 +65,11 @@ const openModal = (popup) => {
 // event handler for closing add and edit modals on form submission
 const closeModal = (popup) => {
   popup.classList.remove("modal_opened");
-  resetValidation(popup.querySelector(".modal__form"));
+
+  // if the modal is a form modal, run resetValidation function
+  if (popup.id !== "image-modal") {
+    resetValidation(popup.querySelector(".modal__form"));
+  }
 };
 
 // event handler for the add modal submit event listener
@@ -214,8 +218,8 @@ function toggleButtonState(inputList, buttonElement) {
 
 // adding click and escape key event listeners to modals
 modals.forEach((modal) => {
-  // if the modal is a form modal (form modals use the modal__container class, image modals use modal__image-container)
-  if (modal.querySelector(".modal__container")) {
+  // if the modal is a form modal
+  if (modal.id !== "image-modal") {
     const modalContainer = modal.querySelector(".modal__container");
     // stop click events that originate within modal container from bubbling up to the modal
     modalContainer.addEventListener("click", (evt) => {
