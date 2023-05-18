@@ -62,9 +62,10 @@ const openModal = (popup) => {
   popup.classList.add("modal_opened");
 };
 
-// for closing add and edit modals on form submission
+// event handler for closing add and edit modals on form submission
 const closeModal = (popup) => {
   popup.classList.remove("modal_opened");
+  resetValidation(popup.querySelector(".modal__form"));
 };
 
 // event handler for the add modal submit event listener
@@ -215,7 +216,7 @@ enableValidation();
 
 // adding click and escape key event listeners to modals
 modals.forEach((modal) => {
-  // if the modal is a form modal
+  // if the modal is a form modal (form modals use the modal__container class, image modals use modal__image-container)
   if (modal.querySelector(".modal__container")) {
     const modalContainer = modal.querySelector(".modal__container");
     // stop click events that originate within modal container from bubbling up to the modal
@@ -241,3 +242,11 @@ modals.forEach((modal) => {
     }
   });
 });
+
+function resetValidation(form) {
+  const inputList = form.querySelectorAll(".modal__input");
+  inputList.forEach((inputElement) => {
+    const errorElement = form.querySelector(`#${inputElement.id}-error`);
+    hideErrorMessage(inputElement, errorElement);
+  });
+}
