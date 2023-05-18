@@ -1,3 +1,5 @@
+import { configurationObject, resetValidation } from "./validate";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -34,7 +36,6 @@ const inputNameEdit = modalEdit.querySelector(".modal__input_type_name-edit");
 const inputTitle = modalEdit.querySelector(".modal__input_type_description");
 const cardTemplate = document.querySelector("#card-template").content;
 const galleryList = document.querySelector(".gallery__item-list");
-const modals = document.querySelectorAll(".modal");
 
 // add modal objects
 const modalAdd = document.querySelector("#add-modal");
@@ -68,7 +69,10 @@ const closeModal = (popup) => {
 
   // if the modal is a form modal, run resetValidation function
   if (popup.id !== "image-modal") {
-    resetValidation(popup.querySelector(".modal__form"));
+    resetValidation(
+      popup.querySelector(configurationObject.formSelector),
+      configurationObject
+    );
   }
 };
 

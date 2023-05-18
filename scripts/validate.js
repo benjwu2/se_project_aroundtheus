@@ -1,4 +1,4 @@
-const configurationObject = {
+export const configurationObject = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   saveButtonSelector: ".modal__save-button",
@@ -8,6 +8,8 @@ const configurationObject = {
   errorVisibleClass: "modal__error_visible",
   disabledSaveButtonClass: "modal__save-button_disabled",
 };
+
+const modals = document.querySelectorAll(".modal");
 
 function enableValidation(settings) {
   const formList = Array.from(document.querySelectorAll(".modal__form"));
@@ -99,11 +101,11 @@ modals.forEach((modal) => {
   });
 });
 
-function resetValidation(form) {
-  const inputList = form.querySelectorAll(configurationObject.inputSelector);
+export function resetValidation(form, settings) {
+  const inputList = form.querySelectorAll(settings.inputSelector);
   inputList.forEach((inputElement) => {
     const errorElement = form.querySelector(`#${inputElement.id}-error`);
-    hideErrorMessage(inputElement, errorElement);
+    hideErrorMessage(inputElement, errorElement, settings);
   });
 }
 
