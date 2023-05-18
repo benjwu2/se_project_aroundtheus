@@ -204,3 +204,22 @@ function toggleButtonState(inputList, buttonElement) {
 }
 
 enableValidation();
+
+// adding click and escape key event listeners to modals
+
+modals.forEach((modal) => {
+  modal.addEventListener("click", (evt) => {
+    const modalContainer = modal.querySelector(".modal__container");
+    const modalImage = modal.querySelector(".modal__image");
+
+    if (evt.target !== modalContainer && evt.target !== modalImage) {
+      closeModal(modal);
+    }
+  });
+
+  document.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closeModal(modal);
+    }
+  });
+});
