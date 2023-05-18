@@ -58,14 +58,22 @@ const imageDescription = document.querySelector(".modal__image-description");
 inputNameEdit.value = name.textContent;
 inputTitle.value = title.textContent;
 
+function handleEscapeKeyPress(evt) {
+  if (evt.key === "Escape") {
+    closeModal(popup);
+  }
+}
+
 // open and close modal functions
 const openModal = (popup) => {
   popup.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscapeKeyPress);
 };
 
 // event handler for closing add and edit modals on form submission
 const closeModal = (popup) => {
   popup.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscapeKeyPress);
 
   // if the modal is a form modal, run resetValidation function
   if (popup.id !== "image-modal") {

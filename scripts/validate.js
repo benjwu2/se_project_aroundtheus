@@ -91,12 +91,6 @@ modals.forEach((modal) => {
   modal.addEventListener("click", (evt) => {
     closeModal(modal);
   });
-
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      closeModal(modal);
-    }
-  });
 });
 
 function resetValidation(form, settings) {
