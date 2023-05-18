@@ -212,8 +212,6 @@ function toggleButtonState(inputList, buttonElement) {
   }
 }
 
-enableValidation();
-
 // adding click and escape key event listeners to modals
 modals.forEach((modal) => {
   // if the modal is a form modal (form modals use the modal__container class, image modals use modal__image-container)
@@ -250,3 +248,5 @@ function resetValidation(form) {
     hideErrorMessage(inputElement, errorElement);
   });
 }
+
+enableValidation();
