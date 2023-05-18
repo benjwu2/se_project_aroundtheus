@@ -87,7 +87,8 @@ function handleAddFormSubmit(evt) {
   evt.target.reset();
   toggleButtonState(
     Array.from(addForm.querySelectorAll(".modal__input")),
-    addFormSaveButton
+    addFormSaveButton,
+    configurationObject
   );
 }
 
