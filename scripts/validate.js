@@ -9,8 +9,6 @@ const configurationObject = {
   disabledSaveButtonClass: "modal__save-button_disabled",
 };
 
-const modals = document.querySelectorAll(".modal");
-
 function enableValidation(settings) {
   const formList = Array.from(document.querySelectorAll(".modal__form"));
 

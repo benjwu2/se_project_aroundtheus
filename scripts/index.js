@@ -25,6 +25,8 @@ const initialCards = [
   },
 ];
 
+const modals = document.querySelectorAll(".modal");
+
 // edit modal objects
 const modalEdit = document.querySelector("#edit-modal");
 const editForm = modalEdit.querySelector("#edit-form");
