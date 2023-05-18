@@ -179,14 +179,22 @@ function setEventListeners(form) {
 
 function checkInputValidity(inputElement, errorElement) {
   if (inputElement.validity.valid) {
-    inputElement.classList.remove("modal__input_invalid");
-    errorElement.classList.remove("modal__error_visible");
-    errorElement.textContent = "";
+    hideErrorMessage(inputElement, errorElement);
   } else {
-    inputElement.classList.remove("modal__input_invalid");
-    errorElement.classList.add("modal__error_visible");
-    errorElement.textContent = inputElement.validationMessage;
+    showErrorMessage(inputElement, errorElement);
   }
+}
+
+function showErrorMessage(inputElement, errorElement) {
+  inputElement.classList.remove("modal__input_invalid");
+  errorElement.classList.add("modal__error_visible");
+  errorElement.textContent = inputElement.validationMessage;
+}
+
+function hideErrorMessage(inputElement, errorElement) {
+  inputElement.classList.remove("modal__input_invalid");
+  errorElement.classList.remove("modal__error_visible");
+  errorElement.textContent = "";
 }
 
 function hasInvalidInput(inputList) {
