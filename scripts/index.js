@@ -159,44 +159,55 @@ closeButtons.forEach((item) => {
 
 // validation functions
 
-function enableValidation() {
+const configurationObject = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  saveButtonSelector: ".modal__save-button",
+  modalContainerSelector: ".modal__container",
+  imageModalSelector: ".modal__image",
+  invalidInputClass: "modal__input_invalid",
+  errorVisibleClass: "modal__error_visible",
+  disabledSaveButtonClass: "modal__save-button_disabled",
+};
+
+function enableValidation(settings) {
   const formList = Array.from(document.querySelectorAll(".modal__form"));
 
   formList.forEach((form) => {
-    setEventListeners(form);
+    setEventListeners(form, settings);
   });
 }
 
-function setEventListeners(form) {
-  const inputList = Array.from(form.querySelectorAll(".modal__input"));
-  const buttonElement = form.querySelector(".modal__save-button");
+function setEventListeners(form, settings) {
+  const inputList = Array.from(form.querySelectorAll(settings.inputSelector));
+  const buttonElement = form.querySelector(settings.saveButtonSelector);
 
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, settings);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       const errorElement = form.querySelector(`#${inputElement.id}-error`);
-      checkInputValidity(inputElement, errorElement);
-      toggleButtonState(inputList, buttonElement);
+      checkInputValidity(inputElement, errorElement, settings);
+      toggleButtonState(inputList, buttonElement, settings);
     });
   });
 }
 
-function checkInputValidity(inputElement, errorElement) {
+function checkInputValidity(inputElement, errorElement, settings) {
   if (inputElement.validity.valid) {
-    hideErrorMessage(inputElement, errorElement);
+    hideErrorMessage(inputElement, errorElement, settings);
   } else {
-    showErrorMessage(inputElement, errorElement);
+    showErrorMessage(inputElement, errorElement, settings);
   }
 }
 
-function showErrorMessage(inputElement, errorElement) {
-  inputElement.classList.remove("modal__input_invalid");
-  errorElement.classList.add("modal__error_visible");
+function showErrorMessage(inputElement, errorElement, settings) {
+  inputElement.classList.add(settings.invalidInputClass);
+  errorElement.classList.add(settings.errorVisibleClass);
   errorElement.textContent = inputElement.validationMessage;
 }
 
-function hideErrorMessage(inputElement, errorElement) {
+function hideErrorMessage(inputElement, errorElement, settings) {
   inputElement.classList.remove("modal__input_invalid");
   errorElement.classList.remove("modal__error_visible");
   errorElement.textContent = "";
@@ -206,13 +217,13 @@ function hasInvalidInput(inputList) {
   return inputList.some((input) => !input.validity.valid);
 }
 
-function toggleButtonState(inputList, buttonElement) {
+function toggleButtonState(inputList, buttonElement, settings) {
   if (hasInvalidInput(inputList)) {
     buttonElement.setAttribute("disabled", true);
-    buttonElement.classList.add("modal__save-button_disabled");
+    buttonElement.classList.add(settings.disabledSaveButtonClass);
   } else {
     buttonElement.removeAttribute("disabled");
-    buttonElement.classList.remove("modal__save-button_disabled");
+    buttonElement.classList.remove(settings.disabledSaveButtonClass);
   }
 }
 
@@ -220,14 +231,18 @@ function toggleButtonState(inputList, buttonElement) {
 modals.forEach((modal) => {
   // if the modal is a form modal
   if (modal.id !== "image-modal") {
-    const modalContainer = modal.querySelector(".modal__container");
+    const modalContainer = modal.querySelector(
+      configurationObject.modalContainerSelector
+    );
     // stop click events that originate within modal container from bubbling up to the modal
     modalContainer.addEventListener("click", (evt) => {
       evt.stopPropagation();
     });
   } else {
     // if the modal is an image modal
-    const modalImage = modal.querySelector(".modal__image");
+    const modalImage = modal.querySelector(
+      configurationObject.imageModalSelector
+    );
     // stop click events that originate within image from bubbling up to the modal
     modalImage.addEventListener("click", (evt) => {
       evt.stopPropagation();
@@ -246,11 +261,11 @@ modals.forEach((modal) => {
 });
 
 function resetValidation(form) {
-  const inputList = form.querySelectorAll(".modal__input");
+  const inputList = form.querySelectorAll(configurationObject.inputSelector);
   inputList.forEach((inputElement) => {
     const errorElement = form.querySelector(`#${inputElement.id}-error`);
     hideErrorMessage(inputElement, errorElement);
   });
 }
 
-enableValidation();
+enableValidation(configurationObject);
