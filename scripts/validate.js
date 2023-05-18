@@ -1,4 +1,4 @@
-export const configurationObject = {
+const configurationObject = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   saveButtonSelector: ".modal__save-button",
@@ -101,7 +101,7 @@ modals.forEach((modal) => {
   });
 });
 
-export function resetValidation(form, settings) {
+function resetValidation(form, settings) {
   const inputList = form.querySelectorAll(settings.inputSelector);
   inputList.forEach((inputElement) => {
     const errorElement = form.querySelector(`#${inputElement.id}-error`);

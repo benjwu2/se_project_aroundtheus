@@ -1,5 +1,3 @@
-import { configurationObject, resetValidation } from "./validate";
-
 const initialCards = [
   {
     name: "Yosemite Valley",
