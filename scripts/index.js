@@ -134,7 +134,7 @@ function handleImageClick(evt) {
 
   image.src = eventTarget.src;
   imageDescription.textContent = eventTarget.alt;
-  image.alt = evt.target.nextSibling.textContent;
+  image.alt = evt.target.alt;
 
   openModal(modalImage);
 }
