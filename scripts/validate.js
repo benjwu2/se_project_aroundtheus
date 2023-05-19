@@ -10,7 +10,9 @@ const configurationObject = {
 };
 
 function enableValidation(settings) {
-  const formList = Array.from(document.querySelectorAll(".modal__form"));
+  const formList = Array.from(
+    document.querySelectorAll(configurationObject.formSelector)
+  );
 
   formList.forEach((form) => {
     setEventListeners(form, settings);
