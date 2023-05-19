@@ -171,27 +171,9 @@ closeButtons.forEach((item) => {
 
 // adding click listeners to modals
 modals.forEach((modal) => {
-  // if the modal is a form modal
-  if (modal.id !== "image-modal") {
-    const modalContainer = modal.querySelector(
-      configurationObject.modalContainerSelector
-    );
-    // stop click events that originate within modal container from bubbling up to the modal
-    modalContainer.addEventListener("click", (evt) => {
-      evt.stopPropagation();
-    });
-  } else {
-    // if the modal is an image modal
-    const modalImage = modal.querySelector(
-      configurationObject.imageModalSelector
-    );
-    // stop click events that originate within image from bubbling up to the modal
-    modalImage.addEventListener("click", (evt) => {
-      evt.stopPropagation();
-    });
-  }
-
   modal.addEventListener("click", (evt) => {
-    closeModal(modal);
+    if (evt.target === modal) {
+      closeModal(modal);
+    }
   });
 });
