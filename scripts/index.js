@@ -60,7 +60,7 @@ inputTitle.value = title.textContent;
 
 function handleEscapeKeyPress(evt) {
   if (evt.key === "Escape") {
-    closeModal(popup);
+    closeModal(document.querySelector(".modal_opened"));
   }
 }
 
