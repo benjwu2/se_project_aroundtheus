@@ -74,14 +74,6 @@ const openModal = (popup) => {
 const closeModal = (popup) => {
   popup.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleEscapeKeyPress);
-
-  // if the modal is a form modal, run resetValidation function
-  if (popup.id !== "image-modal") {
-    resetValidation(
-      popup.querySelector(configurationObject.formSelector),
-      configurationObject
-    );
-  }
 };
 
 // event handler for the add modal submit event listener
@@ -160,8 +152,15 @@ function handleProfileFormSubmit(evt) {
 editForm.addEventListener("submit", handleProfileFormSubmit);
 
 // event handlers to open add and edit modal
-addButton.addEventListener("click", () => openModal(modalAdd));
-editButton.addEventListener("click", () => openModal(modalEdit));
+addButton.addEventListener("click", () => {
+  resetValidation(addForm, configurationObject);
+  openModal(modalAdd);
+});
+
+editButton.addEventListener("click", () => {
+  resetValidation(editForm, configurationObject);
+  openModal(modalEdit);
+});
 
 // adding the same event listener to the close buttons on all modals
 
