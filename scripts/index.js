@@ -153,7 +153,6 @@ editForm.addEventListener("submit", handleProfileFormSubmit);
 
 // event handlers to open add and edit modal
 addButton.addEventListener("click", () => {
-  resetValidation(addForm, configurationObject);
   openModal(modalAdd);
 });
 
