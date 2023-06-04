@@ -34,7 +34,6 @@ const editButton = document.querySelector(".profile__edit-button");
 const closeButtons = document.querySelectorAll(".modal__close-button");
 const inputNameEdit = modalEdit.querySelector(".modal__input_type_name-edit");
 const inputTitle = modalEdit.querySelector(".modal__input_type_description");
-const cardTemplate = document.querySelector("#card-template").content;
 const galleryList = document.querySelector(".gallery__item-list");
 
 // add modal objects
@@ -48,11 +47,6 @@ const addFormSaveButton = addForm.querySelector(".modal__save-button");
 // save profile name and title elements
 const name = document.querySelector(".profile__info-name-text");
 const title = document.querySelector(".profile__title");
-
-// image modal objects
-const modalImage = document.querySelector("#image-modal");
-const image = document.querySelector(".modal__image");
-const imageDescription = document.querySelector(".modal__image-description");
 
 // set value of edit form fields to match profile content
 inputNameEdit.value = name.textContent;
@@ -96,48 +90,12 @@ function handleAddFormSubmit(evt) {
 
 addForm.addEventListener("submit", handleAddFormSubmit);
 
-// adding cards
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardTitle = cardElement.querySelector(".card__info-text");
-  const cardImage = cardElement.querySelector(".card__image");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  const likeButton = cardElement.querySelector(".card__like-button");
-
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardTitle.textContent = data.name;
-
-  // adding event listeners for image, like, and delete button
-  cardImage.addEventListener("click", handleImageClick);
-  deleteButton.addEventListener("click", handleDeleteButtonClick);
-  likeButton.addEventListener("click", handleLikeButtonClick);
-
-  return cardElement;
-}
-
+// add cards to gallery on site load
 initialCards.forEach((item) => {
-  const completedCard = getCardElement(item);
+  const cardObject = new Card(item, "#card-template");
+  const completedCard = cardObject.getCardElement();
   galleryList.append(completedCard);
 });
-
-function handleImageClick(evt) {
-  const eventTarget = evt.target;
-
-  image.src = eventTarget.src;
-  imageDescription.textContent = eventTarget.alt;
-  image.alt = evt.target.alt;
-
-  openModal(modalImage);
-}
-
-function handleDeleteButtonClick(evt) {
-  evt.target.closest(".card").replaceWith();
-}
-
-function handleLikeButtonClick(evt) {
-  evt.target.classList.toggle("card__like-button_clicked");
-}
 
 // event handler for edit button event listener
 function handleProfileFormSubmit(evt) {
