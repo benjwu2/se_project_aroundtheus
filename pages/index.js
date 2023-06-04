@@ -48,6 +48,9 @@ const addFormSaveButton = addForm.querySelector(".modal__save-button");
 const name = document.querySelector(".profile__info-name-text");
 const title = document.querySelector(".profile__title");
 
+// forms
+const formList = document.querySelectorAll(".modal__form");
+
 // set value of edit form fields to match profile content
 inputNameEdit.value = name.textContent;
 inputTitle.value = title.textContent;
@@ -81,12 +84,16 @@ function handleAddFormSubmit(evt) {
   );
 
   const completedCard = cardObject.getCardElement();
+  const addValidator = new FormValidator(
+    configurationObject,
+    document.querySelector("#add-form")
+  );
 
   evt.preventDefault();
   galleryList.prepend(completedCard);
   closeModal(modalAdd);
   evt.target.reset();
-  toggleButtonState(
+  addValidator._toggleButtonState(
     Array.from(addForm.querySelectorAll(".modal__input")),
     addFormSaveButton,
     configurationObject
@@ -103,6 +110,10 @@ initialCards.forEach((item) => {
 });
 
 // enable validation for all forms
+formList.forEach((form) => {
+  const validator = new FormValidator(configurationObject, form);
+  validator.enableValidation();
+});
 
 // event handler for edit button event listener
 function handleProfileFormSubmit(evt) {
