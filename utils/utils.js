@@ -3,6 +3,7 @@ import {
   FormValidator,
   configurationObject,
 } from "../components/FormValidator.js";
+import { addForm, addFormSaveButton, modalAdd } from "../pages/index.js";
 
 function handleEscapeKeyPress(evt) {
   if (evt.key === "Escape") {
@@ -21,14 +22,11 @@ function handleAddFormSubmit(evt) {
   );
 
   const completedCard = cardObject.getCardElement();
-  const addValidator = new FormValidator(
-    configurationObject,
-    document.querySelector("#add-form")
-  );
+  const addValidator = new FormValidator(configurationObject, addForm);
 
   evt.preventDefault();
   document.querySelector(".gallery__item-list").prepend(completedCard);
-  closeModal(document.querySelector("#add-modal"));
+  closeModal(modalAdd);
   evt.target.reset();
   addValidator._toggleButtonState(
     Array.from(addForm.querySelectorAll(".modal__input")),

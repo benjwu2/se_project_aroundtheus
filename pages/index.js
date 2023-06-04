@@ -49,6 +49,7 @@ const galleryList = document.querySelector(".gallery__item-list");
 const modalAdd = document.querySelector("#add-modal");
 const addButton = document.querySelector(".profile__add-button");
 const addForm = document.querySelector("#add-form");
+const addFormSaveButton = addForm.querySelector(".modal__save-button");
 
 // save profile name and title elements
 const name = document.querySelector(".profile__info-name-text");
@@ -117,3 +118,5 @@ modals.forEach((modal) => {
     }
   });
 });
+
+export { addForm, addFormSaveButton, modalAdd };
