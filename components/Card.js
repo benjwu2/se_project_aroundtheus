@@ -1,4 +1,10 @@
-class Card {
+import {
+  handleImageClick,
+  handleDeleteButtonClick,
+  handleLikeButtonClick,
+} from "../utils/utils.js";
+
+export class Card {
   constructor(data, templateSelector) {
     this._description = data.name;
     this._link = data.link;

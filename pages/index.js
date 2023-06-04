@@ -1,3 +1,12 @@
+import {
+  FormValidator,
+  configurationObject,
+} from "../components/FormValidator.js";
+
+import { Card } from "../components/Card.js";
+
+import { openModal, closeModal, handleAddFormSubmit } from "../utils/utils.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -55,51 +64,6 @@ const formList = document.querySelectorAll(".modal__form");
 inputNameEdit.value = name.textContent;
 inputTitle.value = title.textContent;
 
-function handleEscapeKeyPress(evt) {
-  if (evt.key === "Escape") {
-    closeModal(document.querySelector(".modal_opened"));
-  }
-}
-
-// open and close modal functions
-const openModal = (popup) => {
-  popup.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscapeKeyPress);
-};
-
-// event handler for closing add and edit modals on form submission
-const closeModal = (popup) => {
-  popup.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleEscapeKeyPress);
-};
-
-// event handler for the add modal submit event listener
-function handleAddFormSubmit(evt) {
-  const cardObject = new Card(
-    {
-      name: inputNameAdd.value,
-      link: inputSource.value,
-    },
-    "#card-template"
-  );
-
-  const completedCard = cardObject.getCardElement();
-  const addValidator = new FormValidator(
-    configurationObject,
-    document.querySelector("#add-form")
-  );
-
-  evt.preventDefault();
-  galleryList.prepend(completedCard);
-  closeModal(modalAdd);
-  evt.target.reset();
-  addValidator._toggleButtonState(
-    Array.from(addForm.querySelectorAll(".modal__input")),
-    addFormSaveButton,
-    configurationObject
-  );
-}
-
 addForm.addEventListener("submit", handleAddFormSubmit);
 
 // add cards to gallery on site load
@@ -156,3 +120,5 @@ modals.forEach((modal) => {
     }
   });
 });
+
+export { modalAdd };

@@ -1,4 +1,4 @@
-class FormValidator {
+export class FormValidator {
   constructor(settings, form) {
     this._settings = settings;
     this._form = form;
@@ -70,3 +70,14 @@ class FormValidator {
     });
   }
 }
+
+export const configurationObject = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  saveButtonSelector: ".modal__save-button",
+  modalContainerSelector: ".modal__container",
+  imageModalSelector: ".modal__image",
+  invalidInputClass: "modal__input_invalid",
+  errorVisibleClass: "modal__error_visible",
+  disabledSaveButtonClass: "modal__save-button_disabled",
+};
