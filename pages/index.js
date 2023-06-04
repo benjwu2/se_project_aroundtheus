@@ -102,6 +102,8 @@ initialCards.forEach((item) => {
   galleryList.append(completedCard);
 });
 
+// enable validation for all forms
+
 // event handler for edit button event listener
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -120,7 +122,11 @@ addButton.addEventListener("click", () => {
 });
 
 editButton.addEventListener("click", () => {
-  resetValidation(editForm, configurationObject);
+  const editValidation = new FormValidator(
+    configurationObject,
+    document.querySelector("#edit-form")
+  );
+  editValidation.resetValidation();
   openModal(modalEdit);
 });
 
