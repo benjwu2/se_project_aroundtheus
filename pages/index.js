@@ -72,10 +72,15 @@ const closeModal = (popup) => {
 
 // event handler for the add modal submit event listener
 function handleAddFormSubmit(evt) {
-  const completedCard = getCardElement({
-    name: inputNameAdd.value,
-    link: inputSource.value,
-  });
+  const cardObject = new Card(
+    {
+      name: inputNameAdd.value,
+      link: inputSource.value,
+    },
+    "#card-template"
+  );
+
+  const completedCard = cardObject.getCardElement();
 
   evt.preventDefault();
   galleryList.prepend(completedCard);
