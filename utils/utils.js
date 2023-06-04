@@ -3,7 +3,6 @@ import {
   FormValidator,
   configurationObject,
 } from "../components/FormValidator.js";
-import { modalAdd } from "../pages/index.js";
 
 function handleEscapeKeyPress(evt) {
   if (evt.key === "Escape") {
@@ -29,7 +28,7 @@ function handleAddFormSubmit(evt) {
 
   evt.preventDefault();
   document.querySelector(".gallery__item-list").prepend(completedCard);
-  closeModal(modalAdd);
+  closeModal(document.querySelector("#add-modal"));
   evt.target.reset();
   addValidator._toggleButtonState(
     Array.from(addForm.querySelectorAll(".modal__input")),
