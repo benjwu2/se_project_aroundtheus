@@ -1,8 +1,4 @@
-import {
-  handleImageClick,
-  handleDeleteButtonClick,
-  handleLikeButtonClick,
-} from "../utils/utils.js";
+import { handleImageClick } from "../utils/utils.js";
 
 export class Card {
   constructor(data, templateSelector) {
@@ -25,15 +21,24 @@ export class Card {
 
     this._cardElement
       .querySelector(".card__delete-button")
-      .addEventListener("click", handleDeleteButtonClick);
+      .addEventListener("click", _handleDeleteButtonClick);
 
     this._cardElement
       .querySelector(".card__like-button")
-      .addEventListener("click", handleLikeButtonClick);
+      .addEventListener("click", _handleLikeButtonClick);
+  }
+
+  _handleDeleteButtonClick(evt) {
+    evt.target.closest(".card").replaceWith();
+  }
+
+  _handleLikeButtonClick(evt) {
+    evt.target.classList.toggle("card__like-button_clicked");
   }
 
   getCardElement() {
     this._cardElement = this._getTemplate();
+    this._cardImage = this._cardElement.querySelector(".card__image");
     this._setEventListeners();
 
     //card description
@@ -41,8 +46,8 @@ export class Card {
       this._description;
 
     //image
-    this._cardElement.querySelector(".card__image").src = this._link;
-    this._cardElement.querySelector(".card__image").alt = this._description;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._description;
 
     return this._cardElement;
   }

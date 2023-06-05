@@ -47,14 +47,6 @@ function handleImageClick(evt) {
   openModal(document.querySelector("#image-modal"));
 }
 
-function handleDeleteButtonClick(evt) {
-  evt.target.closest(".card").replaceWith();
-}
-
-function handleLikeButtonClick(evt) {
-  evt.target.classList.toggle("card__like-button_clicked");
-}
-
 // open and close modal functions
 const openModal = (popup) => {
   popup.classList.add("modal_opened");
@@ -67,12 +59,4 @@ const closeModal = (popup) => {
   document.removeEventListener("keydown", handleEscapeKeyPress);
 };
 
-export {
-  handleEscapeKeyPress,
-  handleAddFormSubmit,
-  handleImageClick,
-  handleDeleteButtonClick,
-  handleLikeButtonClick,
-  openModal,
-  closeModal,
-};
+export { handleImageClick };
