@@ -38,7 +38,7 @@ const modals = document.querySelectorAll(".modal");
 
 // edit modal objects
 const modalEdit = document.querySelector("#edit-modal");
-const editForm = modalEdit.querySelector("#edit-form");
+const editForm = document.forms["edit"];
 const editButton = document.querySelector(".profile__edit-button");
 const closeButtons = document.querySelectorAll(".modal__close-button");
 const inputNameEdit = modalEdit.querySelector(".modal__input_type_name-edit");
@@ -48,7 +48,7 @@ const galleryList = document.querySelector(".gallery__item-list");
 // add modal objects
 const modalAdd = document.querySelector("#add-modal");
 const addButton = document.querySelector(".profile__add-button");
-const addForm = document.querySelector("#add-form");
+const addForm = document.forms["add"];
 const addFormSaveButton = addForm.querySelector(".modal__save-button");
 
 // save profile name and title elements
@@ -72,9 +72,12 @@ initialCards.forEach((item) => {
 });
 
 // enable validation for all forms
+const formValidators = {};
+
 formList.forEach((form) => {
-  const validator = new FormValidator(configurationObject, form);
-  validator.enableValidation();
+  const formName = form.getAttribute("name");
+  formValidators[`${formName}`] = new FormValidator(configurationObject, form);
+  formValidators[`${formName}`].enableValidation();
 });
 
 // event handler for edit button event listener
@@ -95,11 +98,7 @@ addButton.addEventListener("click", () => {
 });
 
 editButton.addEventListener("click", () => {
-  const editValidation = new FormValidator(
-    configurationObject,
-    document.querySelector("#edit-form")
-  );
-  editValidation.resetValidation();
+  formValidators["edit"].resetValidation();
   openModal(modalEdit);
 });
 

@@ -21,11 +21,15 @@ export class Card {
 
     this._cardElement
       .querySelector(".card__delete-button")
-      .addEventListener("click", _handleDeleteButtonClick);
+      .addEventListener("click", (evt) => {
+        _handleDeleteButtonClick(evt);
+      });
 
     this._cardElement
       .querySelector(".card__like-button")
-      .addEventListener("click", _handleLikeButtonClick);
+      .addEventListener("click", (evt) => {
+        _handleLikeButtonClick(evt);
+      });
   }
 
   _handleDeleteButtonClick(evt) {
