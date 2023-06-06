@@ -19,16 +19,17 @@ export class Card {
       .querySelector(".card__image")
       .addEventListener("click", handleImageClick);
 
+    // event handlers need to be nested inside arrow function because of the usage of the this keyword
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", (evt) => {
-        _handleDeleteButtonClick(evt);
+        this._handleDeleteButtonClick(evt);
       });
 
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", (evt) => {
-        _handleLikeButtonClick(evt);
+        this._handleLikeButtonClick(evt);
       });
   }
 

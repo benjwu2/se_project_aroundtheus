@@ -47,6 +47,7 @@ export class FormValidator {
   }
 
   resetValidation() {
+    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       const errorElement = this._form.querySelector(
         `#${inputElement.id}-error`

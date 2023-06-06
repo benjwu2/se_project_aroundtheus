@@ -5,7 +5,7 @@ import {
 
 import { Card } from "../components/Card.js";
 
-import { openModal, closeModal, handleAddFormSubmit } from "../utils/utils.js";
+import { openModal, closeModal } from "../utils/utils.js";
 
 const initialCards = [
   {
@@ -66,7 +66,7 @@ addForm.addEventListener("submit", handleAddFormSubmit);
 
 // add cards to gallery on site load
 initialCards.forEach((item) => {
-  const cardObject = new Card(item, "#card-template");
+  const cardObject = createCardObject(item, "#card-template");
   const completedCard = cardObject.getCardElement();
   galleryList.append(completedCard);
 });
@@ -79,6 +79,30 @@ formList.forEach((form) => {
   formValidators[`${formName}`] = new FormValidator(configurationObject, form);
   formValidators[`${formName}`].enableValidation();
 });
+
+function createCardObject(data, templateSelector) {
+  return new Card(data, templateSelector);
+}
+
+// event handler for the add modal submit event listener
+
+function handleAddFormSubmit(evt) {
+  const cardObject = createCardObject(
+    {
+      name: document.querySelector(".modal__input_type_name-add").value,
+      link: document.querySelector(".modal__input_type_src").value,
+    },
+    "#card-template"
+  );
+
+  const completedCard = cardObject.getCardElement();
+
+  evt.preventDefault();
+  galleryList.prepend(completedCard);
+  closeModal(modalAdd);
+  evt.target.reset();
+  formValidators["add"].resetValidation();
+}
 
 // event handler for edit button event listener
 function handleProfileFormSubmit(evt) {
