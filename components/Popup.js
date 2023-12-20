@@ -19,7 +19,7 @@ export class Popup {
     }
   }
 
-  setEventListener() {
+  setEventListeners() {
     this.popup
       .querySelector(".modal__close-button")
       .addEventListener("click", closeModal);
@@ -37,5 +37,34 @@ export class PopupWithImage extends Popup {
     this.popup.querySelector(".card__image").alt = data.name;
     this.popup.querySelector(".card__image").text = data.name;
     super.open(this.popup);
+  }
+}
+
+export class PopupWithForm extends Popup {
+  constructor(popupSelector, callBack) {
+    super(popupSelector);
+    this.callBack = callBack;
+  }
+
+  _getInputValues() {
+    const inputs = this.popup.querySelectorAll("input");
+
+    // creates a dictionary of input name - value pairs
+    const inputValues = {};
+    inputs.forEach((item) => {
+      inputValues[`${item.name}`] = item.value;
+    });
+
+    return inputValues;
+  }
+
+  setEventListeners() {
+    this.popup.addEventListener(
+      ("submit",
+      (evt) => {
+        evt.preventDefault();
+      })
+    );
+    super.setEventListeners();
   }
 }
