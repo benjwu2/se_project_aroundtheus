@@ -68,4 +68,4 @@ const closeModal = (popup) => {
   document.removeEventListener("keydown", handleEscapeKeyPress);
 };
 
-export { openModal, closeModal, handleImageClick };
+export { openModal, closeModal, handleImageClick, handleEscapeKeyPress };

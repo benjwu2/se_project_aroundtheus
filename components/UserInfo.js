@@ -4,6 +4,7 @@ class UserInfo {
     this.jobElement = document.querySelector(`${jobSelector}`);
   }
 
+  // see
   getUserInfo() {
     profileCard = document.querySelector(".profile");
     userInfo = {

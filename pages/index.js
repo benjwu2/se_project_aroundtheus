@@ -127,6 +127,7 @@ function handleAddFormSubmit(evt) {
 
   // galleryList.prepend(completedCard);
   //! debug, remove after
+  evt.preventDefault();
   console.log("beep, handleAddFormSubmit called");
   gallerySection.addItem(completedCard);
   closeModal(modalAdd);

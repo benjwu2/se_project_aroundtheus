@@ -14,5 +14,6 @@ export class Section {
   addItem(element) {
     let container = document.querySelector(this.selector);
     container.append(element);
+    console.log("beep, addItem called");
   }
 }
