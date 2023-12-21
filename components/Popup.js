@@ -40,10 +40,12 @@ export class PopupWithImage extends Popup {
   }
 }
 
+// the callback parameter is used to input the
+// callback function for the submit event listener
 export class PopupWithForm extends Popup {
-  constructor(popupSelector, callBack) {
+  constructor(popupSelector, callback) {
     super(popupSelector);
-    this.callBack = callBack;
+    this.callback = callback;
   }
 
   _getInputValues() {
@@ -63,6 +65,7 @@ export class PopupWithForm extends Popup {
       ("submit",
       (evt) => {
         evt.preventDefault();
+        this.callback();
       })
     );
     super.setEventListeners();
