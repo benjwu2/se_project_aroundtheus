@@ -7,6 +7,10 @@ import { Card } from "../components/Card.js";
 
 import { openModal, closeModal } from "../utils/utils.js";
 
+import { PopupWithImage, PopupWithForm } from "../components/Popup.js";
+
+import { Section } from "../components/Section.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -65,11 +69,21 @@ inputTitle.value = title.textContent;
 addForm.addEventListener("submit", handleAddFormSubmit);
 
 // add cards to gallery on site load
-initialCards.forEach((item) => {
+function renderer(item) {
   const cardObject = createCardObject(item, "#card-template");
   const completedCard = cardObject.getCardElement();
   galleryList.append(completedCard);
-});
+}
+
+const sectionInstance = new Section(
+  {
+    items: initialCards,
+    renderer: renderer,
+  },
+  ".gallery__item-list"
+);
+
+sectionInstance.renderItems();
 
 // enable validation for all forms
 const formValidators = {};
@@ -142,4 +156,21 @@ modals.forEach((modal) => {
   });
 });
 
+// creating instances of classes
+
+const imagePopup = new PopupWithImage("#image-modal");
+imagePopup.setEventListeners();
+
+const profileFormPopup = new PopupWithForm("#edit-form", handleAddFormSubmit);
+profileFormPopup.setEventListeners();
+
+const addFormPopup = new PopupWithForm("#add-form", handleAddFormSubmit);
+addFormPopup.setEventListeners();
+
 export { addForm, addFormSaveButton, modalAdd };
+
+initialCards.forEach((item) => {
+  const cardObject = createCardObject(item, "#card-template");
+  const completedCard = cardObject.getCardElement();
+  galleryList.append(completedCard);
+});
