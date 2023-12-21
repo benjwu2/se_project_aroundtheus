@@ -125,8 +125,10 @@ function handleAddFormSubmit(evt) {
 
   const completedCard = cardObject.getCardElement();
 
-  evt.preventDefault();
-  galleryList.prepend(completedCard);
+  // galleryList.prepend(completedCard);
+  //! debug, remove after
+  console.log("beep, handleAddFormSubmit called");
+  gallerySection.addItem(completedCard);
   closeModal(modalAdd);
   evt.target.reset();
   formValidators["add"].resetValidation();
