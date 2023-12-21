@@ -88,6 +88,7 @@ sectionInstance.renderItems();
 // enable validation for all forms
 const formValidators = {};
 
+//! validation
 formList.forEach((form) => {
   const formName = form.getAttribute("name");
   formValidators[`${formName}`] = new FormValidator(configurationObject, form);
@@ -168,9 +169,3 @@ const addFormPopup = new PopupWithForm("#add-form", handleAddFormSubmit);
 addFormPopup.setEventListeners();
 
 export { addForm, addFormSaveButton, modalAdd };
-
-initialCards.forEach((item) => {
-  const cardObject = createCardObject(item, "#card-template");
-  const completedCard = cardObject.getCardElement();
-  galleryList.append(completedCard);
-});
