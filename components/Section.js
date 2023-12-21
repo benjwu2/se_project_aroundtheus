@@ -12,7 +12,7 @@ export class Section {
   }
 
   addItem(element) {
-    let container = document.querySelector(".gallery__item-list");
+    let container = document.querySelector(this.selector);
     container.append(element);
   }
 }
