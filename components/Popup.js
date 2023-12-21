@@ -22,7 +22,7 @@ export class Popup {
   setEventListeners() {
     this.popup
       .querySelector(".modal__close-button")
-      .addEventListener("click", closeModal);
+      .addEventListener("click", this.closeModal);
     this.popup.addEventListener("click", (evt) => {
       if (evt.target == this.popup) {
         this.closeModal(this.popup);
@@ -61,13 +61,10 @@ export class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    this.popup.addEventListener(
-      ("submit",
-      (evt) => {
-        evt.preventDefault();
-        this.callback(this._getInputValues());
-      })
-    );
+    this.popup.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this.callback(this._getInputValues());
+    });
     super.setEventListeners();
   }
 }
