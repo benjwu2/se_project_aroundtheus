@@ -1,3 +1,5 @@
+import { handleEscapeKeyPress } from "../utils/utils";
+
 export class Popup {
   constructor(popupSelector) {
     this.popup = document.querySelector(popupSelector);
