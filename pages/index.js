@@ -76,7 +76,7 @@ function renderer(item) {
 }
 
 // creating instances of classes
-const sectionInstance = new Section(
+const gallerySection = new Section(
   {
     items: initialCards,
     renderer: renderer,
@@ -96,7 +96,7 @@ profileFormPopup.setEventListeners();
 const addFormPopup = new PopupWithForm("#add-form", handleAddFormSubmit);
 addFormPopup.setEventListeners();
 
-sectionInstance.renderItems();
+gallerySection.renderItems();
 
 // enable validation for all forms
 const formValidators = {};
