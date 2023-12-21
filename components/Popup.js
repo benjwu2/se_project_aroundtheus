@@ -1,4 +1,4 @@
-import { handleEscapeKeyPress } from "../utils/utils";
+import { handleEscapeKeyPress } from "../utils/utils.js";
 
 export class Popup {
   constructor(popupSelector) {
