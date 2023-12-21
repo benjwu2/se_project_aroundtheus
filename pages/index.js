@@ -75,6 +75,7 @@ function renderer(item) {
   galleryList.append(completedCard);
 }
 
+// creating instances of classes
 const sectionInstance = new Section(
   {
     items: initialCards,
@@ -82,6 +83,18 @@ const sectionInstance = new Section(
   },
   ".gallery__item-list"
 );
+
+const imagePopup = new PopupWithImage("#image-modal");
+imagePopup.setEventListeners();
+
+const profileFormPopup = new PopupWithForm(
+  "#edit-form",
+  handleProfileFormSubmit
+);
+profileFormPopup.setEventListeners();
+
+const addFormPopup = new PopupWithForm("#add-form", handleAddFormSubmit);
+addFormPopup.setEventListeners();
 
 sectionInstance.renderItems();
 
@@ -120,11 +133,13 @@ function handleAddFormSubmit(evt) {
 }
 
 // event handler for edit button event listener
-function handleProfileFormSubmit(evt) {
+// _getInputValues() function in Popup.js creates a dictionary based on input name attribute
+// values, hence inputValues.name and inputValues.description (see profile form in index.html)
+function handleProfileFormSubmit(evt, inputValues) {
   evt.preventDefault();
 
-  name.textContent = inputNameEdit.value;
-  title.textContent = inputTitle.value;
+  name.textContent = inputValues.name;
+  title.textContent = inputValues.description;
 
   closeModal(modalEdit);
 }
@@ -156,16 +171,5 @@ modals.forEach((modal) => {
     }
   });
 });
-
-// creating instances of classes
-
-const imagePopup = new PopupWithImage("#image-modal");
-imagePopup.setEventListeners();
-
-const profileFormPopup = new PopupWithForm("#edit-form", handleAddFormSubmit);
-profileFormPopup.setEventListeners();
-
-const addFormPopup = new PopupWithForm("#add-form", handleAddFormSubmit);
-addFormPopup.setEventListeners();
 
 export { addForm, addFormSaveButton, modalAdd };
