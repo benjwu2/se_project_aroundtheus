@@ -124,8 +124,8 @@ function createCardObject(data, templateSelector) {
 function handleAddFormSubmit({ name, link }) {
   const cardObject = createCardObject(
     {
-      name: name,
-      link: link,
+      name: "yose",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
     },
     "#card-template"
   );
