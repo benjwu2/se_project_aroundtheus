@@ -117,11 +117,15 @@ function createCardObject(data, templateSelector) {
 
 // event handler for the add modal submit event listener
 
-function handleAddFormSubmit() {
+// the destructuring variables "name," "link" have to match
+// the name of the keys for the passed object, which are in turn
+// named after the value of the name attributes for the two
+// add form inputs in index.html ~ lines 77 and 88
+function handleAddFormSubmit({ name, link }) {
   const cardObject = createCardObject(
     {
-      name: document.querySelector(".modal__input_type_name-add").value,
-      link: document.querySelector(".modal__input_type_src").value,
+      name: name,
+      link: link,
     },
     "#card-template"
   );
