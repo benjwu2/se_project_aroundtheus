@@ -66,8 +66,6 @@ const formList = document.querySelectorAll(".modal__form");
 inputNameEdit.value = name.textContent;
 inputTitle.value = title.textContent;
 
-addForm.addEventListener("submit", handleAddFormSubmit);
-
 // add cards to gallery on site load
 function renderer(item) {
   const cardObject = createCardObject(item, "#card-template");
