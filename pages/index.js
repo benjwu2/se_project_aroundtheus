@@ -75,7 +75,7 @@ function renderer(item) {
   galleryList.append(completedCard);
 }
 
-// creating instances of classes
+// CREATING INSTANCES OF CLASSES
 const gallerySection = new Section(
   {
     items: initialCards,
@@ -84,21 +84,24 @@ const gallerySection = new Section(
   ".gallery__item-list"
 );
 
+// image modal class
 const imagePopup = new PopupWithImage("#image-modal");
 imagePopup.setEventListeners();
 
+// profile edit modal class
 const profileFormPopup = new PopupWithForm(
   "#edit-form",
   handleProfileFormSubmit
 );
 profileFormPopup.setEventListeners();
 
+// add image modal class
 const addFormPopup = new PopupWithForm("#add-form", handleAddFormSubmit);
 addFormPopup.setEventListeners();
 
 gallerySection.renderItems();
 
-// enable validation for all forms
+// ENABLE VALIDATION FOR ALL FORMS
 const formValidators = {};
 
 //! validation
