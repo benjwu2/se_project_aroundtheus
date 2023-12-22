@@ -122,8 +122,8 @@ function createCardObject(data, templateSelector) {
 function handleAddFormSubmit({ name, link }) {
   const cardObject = createCardObject(
     {
-      name: "yose",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+      name: name,
+      link: link,
     },
     "#card-template"
   );
@@ -131,8 +131,6 @@ function handleAddFormSubmit({ name, link }) {
   const completedCard = cardObject.getCardElement();
 
   // galleryList.prepend(completedCard);
-  //! debug, remove after
-  console.log("beep, handleAddFormSubmit called");
   gallerySection.addItem(completedCard);
   closeModal(modalAdd);
   addForm.reset();
