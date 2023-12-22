@@ -117,7 +117,7 @@ function createCardObject(data, templateSelector) {
 
 // event handler for the add modal submit event listener
 
-function handleAddFormSubmit(evt) {
+function handleAddFormSubmit() {
   const cardObject = createCardObject(
     {
       name: document.querySelector(".modal__input_type_name-add").value,
@@ -130,11 +130,10 @@ function handleAddFormSubmit(evt) {
 
   // galleryList.prepend(completedCard);
   //! debug, remove after
-  evt.preventDefault();
   console.log("beep, handleAddFormSubmit called");
   gallerySection.addItem(completedCard);
   closeModal(modalAdd);
-  evt.target.reset();
+  addForm.reset();
   formValidators["add"].resetValidation();
 }
 
