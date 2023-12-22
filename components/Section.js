@@ -13,7 +13,7 @@ export class Section {
 
   addItem(element) {
     let container = document.querySelector(this.selector);
-    container.append(element);
+    container.prepend(element);
     console.log("beep, addItem called");
   }
 }
